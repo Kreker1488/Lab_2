@@ -3,9 +3,18 @@
 #include <iostream>
 #include <string>
 
-bool authorization(std::string card_number, std::string pincode, std::string user_card_number, std::string user_pincode){
-    if ((user_card_number == card_number) && (user_pincode == pincode)){
-        return true;
+void authorization(std::string card_number, std::string pincode, std::string& user_card_number, std::string& user_pincode){
+    do {
+            std::cout << "Введите номер карты: " << std::endl;
+            std::cin >> user_card_number;
+            std::cout << "Введите PIN-код:" << std::endl;
+            std::cin >> user_pincode;
+            if ((user_card_number == card_number) && (user_pincode == pincode)){
+                std::cout << "Поздравляю, вы успешно авторизовались" << std::endl;
+                break;
+            }
+            else{
+                std::cout << "Неверные данные, попробуйте снова" << std::endl; 
+            }
+        } while (true);
     }
-    return false;
-}
