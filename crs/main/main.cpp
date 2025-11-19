@@ -88,7 +88,7 @@ int main(){
                 pinchange(pincode, user_pincode);
                 break;
             case 2:
-                std::cout << "Текущий баланс карты составляет " << std::ceil(balance * 100) / 100  << currency << std::endl;
+                std::cout << "Текущий баланс карты составляет " << std::ceil(balance * 100) / 100  << " " << currency << std::endl;
                 std::cout << "Нажмите любую клавишу чтобы продолжить" << std::endl;
                 _getch(); //ждем любую клавишу
                 break;

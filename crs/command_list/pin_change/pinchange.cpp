@@ -25,6 +25,7 @@ void pinchange(std::string& pincode, std::string& user_pincode){
             if (!std::isdigit(c)){ // есди найдена НЕцифра то вывести ошибку
                 std::cout << "Ошибка, PIN-код должен содержать только цифры.";
                 flag = false;
+                break;
             };
             unique_digits.insert(c); // добавляем все элементы в множество
         }
