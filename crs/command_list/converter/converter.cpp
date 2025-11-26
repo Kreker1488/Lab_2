@@ -4,44 +4,101 @@
 #include <iostream>
 #include <conio.h>
 
-void convert(float& balance, std::string& currency){
+void convert(float& balance_rub, float& balance_usd, float& balance_euw){
+    std::cout << "Какой баланс вы хотите конвертировать?" << std::endl;
+    std::cout << "1. RUB" << std::endl;
+    std::cout << "2. USD" << std::endl;
+    std::cout << "3. EUW" << std::endl;
+    int i;
+    std::cin >> i;
+
+
     std::cout << "Выберите в какую валюту вы хотите конвертировать деньги:" << std::endl;
     std::cout << "1. RUB" << std::endl;
     std::cout << "2. USD" << std::endl;
     std::cout << "3. EUR" << std::endl;
-
     int x;
     std::cin >> x;
+
+    std::cout << "Укажите сумму для конвертации" << std::endl;
+    float count;
+    std::cin >> count;
+
     switch(x){
         case 1:
-            if (currency == "USD"){
-                balance *= 81.05;
+            if (i == 2){
+                balance_usd -= count;
+                if (balance_usd < 0){
+                    std::cout << "Произошла ошибка" << std::endl;
+                    balance_usd += count;
+                }
+                else{
+                    balance_rub += count * 81.05 + (rand() % 10 - 7);
+                    std::cout << "Валюта была успешно конвертирована. Нажмите любую клавишу чтобы продолжить." << std::endl;
+                }
             }
-            if (currency == "EUR"){
-                balance *= 93.93;
+            if (i == 3){
+                balance_euw -= count;
+                if (balance_euw < 0){
+                    std::cout << "Произошла ошибка" << std::endl;
+                    balance_euw += count;
+                }
+                else{
+                    balance_rub += count * 93.93 * (rand() % 10 - 7);
+                    std::cout << "Валюта была успешно конвертирована. Нажмите любую клавишу чтобы продолжить." << std::endl;
+                }
             }
-            currency = "RUB";
             break;
         case 2:
-            if (currency == "RUB"){
-                balance *= 0.012337;
+            if (i == 1){
+                balance_rub -= count;
+                if (balance_rub < 0){
+                    std::cout << "Произошла ошибка" << std::endl;
+                    balance_rub += count;
+                }
+                else{
+                    balance_usd += count * 0.012337;
+                    std::cout << "Валюта была успешно конвертирована. Нажмите любую клавишу чтобы продолжить." << std::endl;
+                }
             }
-            if (currency == "EUR"){
-                balance *= 1.16;
+            if (i == 3){
+                balance_euw -= count;
+                if (balance_euw < 0){
+                    std::cout << "Произошла ошибка" << std::endl;
+                    balance_euw += count;
+                }
+                else{
+                    balance_usd += count * 1.16;
+                    std::cout << "Валюта была успешно конвертирована. Нажмите любую клавишу чтобы продолжить." << std::endl;
+                }
             }
-            currency = "USD";
             break;
         case 3:
-            if (currency == "RUB"){
-                balance *= 0.010646;
+            if (i == 1){
+                balance_rub -= count;
+                if (balance_rub < 0){
+                    std::cout << "Произошла ошибка" << std::endl;
+                    balance_rub += count;
+                }
+                else{
+                    balance_euw += count * 0.010646;
+                    std::cout << "Валюта была успешно конвертирована. Нажмите любую клавишу чтобы продолжить." << std::endl;
+                }
             }
-            if (currency == "USD"){
-                balance *= 0.8638;
+            if (i == 2){
+                balance_usd -= count;
+                if (balance_usd < 0){
+                    std::cout << "Произошла ошибка" << std::endl;
+                    balance_usd += count;
+                }
+                else{
+                    balance_euw += count * 0.8638;
+                    std::cout << "Валюта была успешно конвертирована. Нажмите любую клавишу чтобы продолжить." << std::endl;
+                }
             }
-            currency = "EUR";
             break;
     }
 
-    std::cout << "Валюта была успешно конвертирована. Нажмите любую клавишу чтобы продолжить." << std::endl;
+    
     _getch(); //ждем любую клавишу
 }
